@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos_grupo27.databinding.FragmentFirstBinding
+import com.example.vinilos_grupo27.viewmodel.AlbumViewModel
 import com.example.vinilos_grupo27.views.AlbumActivity
 
 
@@ -17,10 +19,9 @@ import com.example.vinilos_grupo27.views.AlbumActivity
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewModel: AlbumViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
