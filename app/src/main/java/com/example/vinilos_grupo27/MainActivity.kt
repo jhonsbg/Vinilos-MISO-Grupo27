@@ -25,16 +25,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.fab.setOnClickListener {
-            openAlbumActivity();
-        }
-
     }
 
-    private fun openAlbumActivity(){
-        val intent = Intent(this, AlbumActivity::class.java)
-        startActivity(intent)
-    }
+
 
 
 }
