@@ -29,7 +29,8 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android
+                    android:autoSizeMinTextSize="12sp"
+                    android:textStyle="bold"
                     android:text="@{musician.name}" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -1,4 +1,4 @@
-package com.example.vinilos_grupo27
+package com.example.vinilos_grupo27.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vinilos_grupo27.R
 import com.example.vinilos_grupo27.databinding.FragmentMusicianBinding
 import com.example.vinilos_grupo27.models.Musician
 import com.example.vinilos_grupo27.ui.adapters.MusicianAdapter
