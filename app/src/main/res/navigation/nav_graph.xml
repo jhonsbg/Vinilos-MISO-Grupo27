@@ -13,7 +13,7 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/musicianFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/musicianFragment"
         android:name="com.example.vinilos_grupo27.MusicianFragment"
-        android:label="collector_fragment"
+        android:label="Lista de Musicos"
         tools:layout="@layout/fragment_musician" >
     </fragment>
 
