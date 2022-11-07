@@ -11,8 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.vinilos_grupo27.databinding.ActivityMainBinding
 
-
-public class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
