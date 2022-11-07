@@ -16,16 +16,6 @@
             app:destination="@id/MusicianFragment" />
     </fragment>
     <fragment
-    android:id="@+id/FirstFragment2"
-    android:name="com.example.vinilos_grupo27.FirstFragment"
-    android:label="@string/first_fragment_label"
-    tools:layout="@layout/fragment_first">
-
-    <action
-        android:id="@+id/action_FirstFragment_to_Album"
-        app:destination="@id/AlbumActivity" />
-</fragment>
-    <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.vinilos_grupo27.SecondFragment"
         android:label="@string/second_fragment_label"
@@ -34,12 +24,6 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/AlbumActivity"
-        android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
-        android:label="Lista de Albums"
-        tools:layout="@layout/fragment_album">
     </fragment>
     <fragment
         android:id="@+id/MusicianFragment"
