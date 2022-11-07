@@ -14,17 +14,32 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/MusicianFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_Album"
+            app:destination="@id/AlbumActivity" />
     </fragment>
     <fragment
-    android:id="@+id/FirstFragment2"
-    android:name="com.example.vinilos_grupo27.FirstFragment"
-    android:label="@string/first_fragment_label"
-    tools:layout="@layout/fragment_first">
+        android:id="@+id/MusicianFragment"
+        android:name="com.example.vinilos_grupo27.ui.MusicianFragment"
+        android:label="Lista de Musicos"
+        tools:layout="@layout/fragment_musician" >
+    </fragment>
 
-    <action
-        android:id="@+id/action_FirstFragment_to_Album"
-        app:destination="@id/AlbumActivity" />
-</fragment>
+
+    <fragment
+        android:id="@+id/FirstFragment2"
+        android:name="com.example.vinilos_grupo27.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+    </fragment>
+    <fragment
+        android:id="@+id/AlbumActivity"
+        android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
+        android:label="Lista de Albums"
+        tools:layout="@layout/fragment_album">
+    </fragment>
+
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.vinilos_grupo27.SecondFragment"
@@ -35,18 +50,8 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/AlbumActivity"
-        android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
-        android:label="Lista de Albums"
-        tools:layout="@layout/fragment_album">
-    </fragment>
-    <fragment
-        android:id="@+id/MusicianFragment"
-        android:name="com.example.vinilos_grupo27.ui.MusicianFragment"
-        android:label="Lista de Musicos"
-        tools:layout="@layout/fragment_musician" >
-    </fragment>
+
+
 
 
 </navigation>
