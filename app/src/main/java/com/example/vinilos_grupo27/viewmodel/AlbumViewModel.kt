@@ -3,7 +3,7 @@ package com.example.vinilos_grupo27.viewmodel
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.vinilos_grupo27.models.Album
-import com.example.vinilos_grupo27.repository.AlbumRepository
+import com.example.vinilos_grupo27.repositories.AlbumRepository
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application)  {
     private val albumsRepository = AlbumRepository(application)

@@ -13,6 +13,23 @@ import org.json.JSONArray
 
 class NetworkServiceAdapter constructor(context: Context) {
 
+    companion object{
+        const val BASE_URL= "https://vynils-back2022.herokuapp.com/"
+        var instance: NetworkServiceAdapter? = null
+        fun getInstance(context: Context) =
+            instance ?: synchronized(this) {
+                instance ?: NetworkServiceAdapter(context).also {
+                    instance = it
+                }
+            }
+    }
+    private val requestQueue: RequestQueue by lazy {
+        Volley.newRequestQueue(context.applicationContext)
+    }
+    private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
+        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+    }
+
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
@@ -28,5 +45,6 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
 
 }

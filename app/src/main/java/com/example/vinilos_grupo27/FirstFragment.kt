@@ -1,6 +1,5 @@
 package com.example.vinilos_grupo27
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos_grupo27.databinding.FragmentFirstBinding
 import com.example.vinilos_grupo27.viewmodel.AlbumViewModel
-import com.example.vinilos_grupo27.views.AlbumActivity
 
 
 /**
