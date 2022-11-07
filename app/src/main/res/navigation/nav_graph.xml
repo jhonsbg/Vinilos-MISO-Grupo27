@@ -25,6 +25,7 @@
         tools:layout="@layout/fragment_musician" >
     </fragment>
 
+
     <fragment
         android:id="@+id/FirstFragment2"
         android:name="com.example.vinilos_grupo27.FirstFragment"
@@ -49,6 +50,8 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+
 
 
 </navigation>
