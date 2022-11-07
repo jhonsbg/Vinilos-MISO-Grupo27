@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos_grupo27.databinding.FragmentFirstBinding
+import com.example.vinilos_grupo27.viewmodel.AlbumViewModel
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,10 +17,9 @@ import com.example.vinilos_grupo27.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewModel: AlbumViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,10 @@ class FirstFragment : Fragment() {
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+        binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_Album)
+        }
+
     }
 
     override fun onDestroyView() {
