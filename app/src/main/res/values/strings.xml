@@ -14,4 +14,6 @@
     <string name="title_musicians">Artistas</string>
     <string name="vinilos">Vinilos</string>
     <string name="artistas">Artistas</string>
+    <string name="albumes">Álbumes</string>
+
 </resources>
