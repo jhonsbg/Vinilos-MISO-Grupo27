@@ -9,7 +9,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
+import com.example.vinilos_grupo27.models.Musician
 import org.json.JSONArray
+
 
 class NetworkServiceAdapter constructor(context: Context) {
 
@@ -23,9 +25,11 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
             }
     }
+
     private val requestQueue: RequestQueue by lazy {
         Volley.newRequestQueue(context.applicationContext)
     }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
@@ -40,6 +44,22 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
                 onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+    fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Musician>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Musician(albumId = item.getInt("id"),name = item.getString("name") ))
+                }
+                onComplete(list)
+                Log.d("musicos", list.toString())
             },
             Response.ErrorListener {
                 onError(it)
