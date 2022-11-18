@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.repositories.AlbumRepository
+import org.json.JSONObject
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application)  {
     private val albumsRepository = AlbumRepository(application)
@@ -35,6 +36,15 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         },{
             _eventNetworkError.value = true
         })
+    }
+
+    private fun postDataFromNetwork(body : JSONObject){
+        albumsRepository.postData(body,{
+        _eventNetworkError.value = false
+        _isNetworkErrorShown.value = false
+    },{
+        _eventNetworkError.value = true
+    })
     }
 
 
