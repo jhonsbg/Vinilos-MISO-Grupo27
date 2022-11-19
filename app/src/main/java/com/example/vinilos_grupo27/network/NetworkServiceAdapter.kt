@@ -18,7 +18,7 @@ import org.json.JSONObject
 class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
-        const val BASE_URL= "http://vynils-back-heroku.herokuapp.com/"
+        const val BASE_URL= "https://vynils-back2022.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
