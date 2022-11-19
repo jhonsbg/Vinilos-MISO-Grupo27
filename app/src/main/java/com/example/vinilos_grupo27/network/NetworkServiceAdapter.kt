@@ -1,6 +1,7 @@
 package com.example.vinilos_grupo27.network
 
 import android.content.Context
+import android.provider.MediaStore.Audio.Artists
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -37,7 +38,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getAlbums()=suspendCoroutine<List<Album>>{ cont ->
         requestQueue.add(getRequest("albums",
             { response ->
                 val resp = JSONArray(response)
@@ -46,34 +47,31 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
-            {
-                onError(it)
+            Response.ErrorListener {
+                cont.resumeWithException(it)
             }))
+
     }
-    fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit) {
-        requestQueue.add(
-            getRequest("musicians",
-                { response ->
-                    val resp = JSONArray(response)
-                    val list = mutableListOf<Musician>()
-                    for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
-                        list.add(
-                            i,
-                            Musician(albumId = item.getInt("id"), name = item.getString("name"))
-                        )
-                    }
-                    onComplete(list)
-                    Log.d("musicos", list.toString())
-                },
-                {
-                    onError(it)
-                })
-        )
+    suspend fun getMusicians()= suspendCoroutine<List<Musician>>{cont->
+        requestQueue.add(getRequest("musicians",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Musician>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Musician(albumId = item.getInt("id"), name = item.getString("name")))
+                }
+                cont.resume(list)
+                Log.d("musicos", list.toString())
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+
     }
-    suspend fun getCollectors()= suspendCoroutine<List<Collector>>{cont->
+    suspend fun getCollectors()=suspendCoroutine<List<Collector>>{cont->
         requestQueue.add(getRequest("collectors",
             { response ->
                 val resp = JSONArray(response)
@@ -83,6 +81,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Collector(collectoId = item.getInt("id"),name = item.getString("name")))
                 }
                 cont.resume(list)
+                Log.d("colleccionistas", list.toString())
             },
             Response.ErrorListener {
                 cont.resumeWithException(it)
