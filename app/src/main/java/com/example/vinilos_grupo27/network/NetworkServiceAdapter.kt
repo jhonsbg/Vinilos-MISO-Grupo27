@@ -9,6 +9,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
+import com.example.vinilos_grupo27.models.Collector
 import com.example.vinilos_grupo27.models.Musician
 import org.json.JSONArray
 
@@ -36,7 +37,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
@@ -45,13 +46,13 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
                 onComplete(list)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
     }
     fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("musicians",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Musician>()
                 for (i in 0 until resp.length()) {
@@ -61,10 +62,27 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onComplete(list)
                 Log.d("musicos", list.toString())
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
     }
+    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("collectors",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Collector>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Collector(collectoId = item.getInt("id"),name = item.getString("name")))
+                }
+                onComplete(list)
+                Log.d("Coleccionistas", list.toString())
+            },
+            {
+                onError(it)
+            }))
+    }
+
 
 
 }
