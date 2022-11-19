@@ -25,7 +25,7 @@
             android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/name_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,7 +39,7 @@
             android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/cover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -53,7 +53,7 @@
             android:textColor="@color/white"/>
 
             <EditText
-                android:id="@+id/editTextDate3"
+                android:id="@+id/release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -67,7 +67,7 @@
                 android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/description_album"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:ems="10"
@@ -82,7 +82,7 @@
                 android:textColor="@color/white"/>
 
             <EditText
-                android:id="@+id/editTextDate4"
+                android:id="@+id/genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -97,7 +97,7 @@
                 android:textColor="@color/white"/>
 
             <EditText
-                android:id="@+id/editTextDate5"
+                android:id="@+id/record_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -106,11 +106,11 @@
                 android:textColor="@color/white"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crear"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
