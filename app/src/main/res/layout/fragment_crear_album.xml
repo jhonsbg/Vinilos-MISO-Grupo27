@@ -12,15 +12,107 @@
         tools:context=".CrearAlbumFragment">
 
         <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:text="Name:"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:text="Cover:"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/editTextDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:text="Release Date:"
+            android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/editTextDate3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="datetime"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:text="Description:"
+                android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:text="Genre:"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/editTextDate4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:gravity="center"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:text="Record Label:"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/editTextDate5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:gravity="center"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crear"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
 
     </FrameLayout>
 </layout>
