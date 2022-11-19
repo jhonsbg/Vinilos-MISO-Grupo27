@@ -64,7 +64,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Musician(albumId = item.getInt("id"), name = item.getString("name")))
                 }
                 cont.resume(list)
-                Log.d("musicos", list.toString())
+
             },
             Response.ErrorListener {
                 cont.resumeWithException(it)
@@ -81,7 +81,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Collector(collectoId = item.getInt("id"),name = item.getString("name")))
                 }
                 cont.resume(list)
-                Log.d("colleccionistas", list.toString())
+
             },
             Response.ErrorListener {
                 cont.resumeWithException(it)
