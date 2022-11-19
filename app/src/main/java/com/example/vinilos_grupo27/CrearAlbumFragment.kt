@@ -6,8 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos_grupo27.databinding.FragmentCrearAlbumBinding
 import com.example.vinilos_grupo27.databinding.FragmentFirstBinding
+import com.example.vinilos_grupo27.models.Album
+import com.example.vinilos_grupo27.repositories.AlbumRepository
+import com.example.vinilos_grupo27.ui.adapters.AlbumsAdapter
+import com.example.vinilos_grupo27.viewmodel.AddAlbumViewModel
+import com.example.vinilos_grupo27.viewmodel.AlbumViewModel
+import com.google.gson.Gson
+import org.json.JSONObject
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -27,6 +39,8 @@ class CrearAlbumFragment : Fragment() {
     private var param2: String? = null
     private var _binding: FragmentCrearAlbumBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: AddAlbumViewModel
+    private var viewModelAdapter: AlbumsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +48,7 @@ class CrearAlbumFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        viewModelAdapter = AlbumsAdapter()
     }
 
     override fun onCreateView(
@@ -50,15 +65,62 @@ class CrearAlbumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+        activity.actionBar?.title = getString(R.string.title_albums)
+
         binding.button6.setOnClickListener() {
             Log.d("button_6", "Se dio click en el boton ")
-            val name = binding.nameAlbum.text.toString()
-            val cover = binding.cover.text.toString()
-            val description = binding.descriptionAlbum.text.toString()
-            val releaseDate = binding.releaseDate.text.toString()
-            val genre = binding.genre.text.toString()
-            val recordLabel = binding.recordLabel.text.toString()
-            Log.d("button_6", "los valores ingresados son ${name} , ${cover}, ${description}, ${releaseDate}, ${genre}, ${recordLabel}")
+            val name1 = binding.nameAlbum.text.toString()
+            val cover1 = binding.cover.text.toString()
+            val description1 = binding.descriptionAlbum.text.toString()
+            val releaseDate1 = binding.releaseDate.text.toString()
+            val genre1 = binding.genre.text.toString()
+            val recordLabel1 = binding.recordLabel.text.toString()
+            Log.d(
+                "button_6",
+                "los valores ingresados son ${name1} , ${cover1}, ${description1}, ${releaseDate1}, ${genre1}, ${recordLabel1}"
+            )
+            val album: Album = Album(
+                albumId = 0,
+                name = name1,
+                cover = cover1,
+                releaseDate = releaseDate1,
+                description = description1,
+                genre = genre1,
+                recordLabel = recordLabel1
+            )
+            Log.d(
+                "button_6",
+                "la clase es ${album.albumId} con descripcion ${album.description}"
+            )
+
+            var gson = Gson()
+            var jsonString = gson.toJson(album)
+            val jsonAlbum = JSONObject(jsonString)
+            Log.d(
+                "button_6",
+                "los valores en JSON ingresados son ${jsonString}"
+            )
+
+            viewModel = ViewModelProvider(
+                this,
+                AddAlbumViewModel.Factory(activity.application)
+            ).get(AddAlbumViewModel::class.java)
+            viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
+                it.apply {
+                    viewModelAdapter!!.album = this
+                }
+                Log.d(
+                    "button_6",
+                    "Vamos e enviar los datos del ViewModel del Album"
+                )
+                viewModel.createAlbum(album)
+            })
+            viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+                if (isNetworkError) onNetworkError()
+            })
         }
     }
 
@@ -81,6 +143,18 @@ class CrearAlbumFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun onNetworkError() {
+        if(!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
     }
 
 }
