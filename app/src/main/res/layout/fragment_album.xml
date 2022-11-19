@@ -20,5 +20,26 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/album_item"/>
 
+        <Button
+            android:id="@+id/button_create_album"
+            android:layout_width="269dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="52dp"
+            android:background="#F4F5FB"
+            android:capitalize="none"
+            android:shadowColor="@color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:singleLine="false"
+            android:text="@string/crear_albumes"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </FrameLayout>
 </layout>

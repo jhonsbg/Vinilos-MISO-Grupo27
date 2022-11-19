@@ -18,5 +18,6 @@
     <string name="vinilos">Vinilos</string>
     <string name="artistas">Artistas</string>
     <string name="albumes">Álbumes</string>
+    <string name="crear_albumes">Crear Album</string>
 
 </resources>
