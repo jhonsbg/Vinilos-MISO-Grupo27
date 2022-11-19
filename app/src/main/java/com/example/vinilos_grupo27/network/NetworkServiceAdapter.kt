@@ -12,7 +12,9 @@ import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Collector
 import com.example.vinilos_grupo27.models.Musician
 import org.json.JSONArray
-
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
 
@@ -50,23 +52,28 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
-    fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit){
-        requestQueue.add(getRequest("musicians",
-            { response ->
-                val resp = JSONArray(response)
-                val list = mutableListOf<Musician>()
-                for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Musician(albumId = item.getInt("id"),name = item.getString("name") ))
-                }
-                onComplete(list)
-                Log.d("musicos", list.toString())
-            },
-            {
-                onError(it)
-            }))
+    fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(
+            getRequest("musicians",
+                { response ->
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Musician>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+                        list.add(
+                            i,
+                            Musician(albumId = item.getInt("id"), name = item.getString("name"))
+                        )
+                    }
+                    onComplete(list)
+                    Log.d("musicos", list.toString())
+                },
+                {
+                    onError(it)
+                })
+        )
     }
-    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getCollectors()= suspendCoroutine<List<Collector>>{cont->
         requestQueue.add(getRequest("collectors",
             { response ->
                 val resp = JSONArray(response)
@@ -75,14 +82,11 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Collector(collectoId = item.getInt("id"),name = item.getString("name")))
                 }
-                onComplete(list)
-                Log.d("Coleccionistas", list.toString())
+                cont.resume(list)
             },
-            {
-                onError(it)
+            Response.ErrorListener {
+                cont.resumeWithException(it)
             }))
     }
-
-
-
 }
+
