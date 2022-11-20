@@ -57,12 +57,11 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinilos_grupo27.ui.AlbumDetailFragment"
-        android:label="fragment_album_detail"
+        android:label="Detalle Álbum"
         tools:layout="@layout/fragment_album_detail" >
         <argument
             android:name="albumId"
-            app:argType="integer" />
+            app:argType="integer"/>
     </fragment>
-
 
 </navigation>

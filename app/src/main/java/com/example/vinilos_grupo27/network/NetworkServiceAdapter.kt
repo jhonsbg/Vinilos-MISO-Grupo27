@@ -69,7 +69,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     fun getAlbumDetail(albumId:Int, onComplete:(resp:List<AlbumDetail>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums/$albumId",
-            { response ->
+            Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<AlbumDetail>()
                 for (i in 0 until resp.length()) {
@@ -78,7 +78,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
                 onComplete(list)
             },
-            {
+            Response.ErrorListener {
                 onError(it)
             }))
     }
