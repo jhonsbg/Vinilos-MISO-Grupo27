@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
@@ -59,6 +60,14 @@ class CrearAlbumFragment : Fragment() {
     ): View? {
 
         _binding = FragmentCrearAlbumBinding.inflate(inflater, container, false)
+
+        val genres = resources.getStringArray(R.array.Genres)
+        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item, genres)
+        binding.autoCompleteGenre.setAdapter(arrayAdapter)
+
+        val recordLabel = resources.getStringArray(R.array.RecordLabels)
+        val arrayAdapter2 = ArrayAdapter(requireContext(),R.layout.dropdown_item, recordLabel)
+        binding.autoCompleteRecord.setAdapter(arrayAdapter2)
         return binding.root
         // Inflate the layout for this fragment
        // return inflater.inflate(R.layout.fragment_crear_album, container, false)
@@ -78,8 +87,8 @@ class CrearAlbumFragment : Fragment() {
             val cover1 = binding.cover.text.toString()
             val description1 = binding.descriptionAlbum.text.toString()
             val releaseDate1 = binding.releaseDate.text.toString()
-            val genre1 = binding.genre.text.toString()
-            val recordLabel1 = binding.recordLabel.text.toString()
+            val genre1 = binding.autoCompleteGenre.text.toString()
+            val recordLabel1 = binding.autoCompleteRecord.text.toString()
             Log.d(
                 "button_6",
                 "los valores ingresados son ${name1} , ${cover1}, ${description1}, ${releaseDate1}, ${genre1}, ${recordLabel1}"
