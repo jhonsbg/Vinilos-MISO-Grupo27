@@ -1,12 +1,10 @@
 package com.example.vinilos_grupo27.network
 
 import android.content.Context
-import android.provider.MediaStore.Audio.Artists
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
@@ -48,6 +46,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
                 cont.resume(list)
+                Log.d("albums", list.toString())
             },
             Response.ErrorListener {
                 cont.resumeWithException(it)
@@ -64,6 +63,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     list.add(i, Musician(albumId = item.getInt("id"), name = item.getString("name")))
                 }
                 cont.resume(list)
+                Log.d("musicos", list.toString())
 
             },
             Response.ErrorListener {
@@ -87,5 +87,6 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
 }
 
