@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -41,6 +42,7 @@ class CrearAlbumFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: AddAlbumViewModel
     private var viewModelAdapter: AlbumsAdapter? = null
+    private val viewModel2 : AddAlbumViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +84,7 @@ class CrearAlbumFragment : Fragment() {
                 "button_6",
                 "los valores ingresados son ${name1} , ${cover1}, ${description1}, ${releaseDate1}, ${genre1}, ${recordLabel1}"
             )
+
             val album: Album = Album(
                 albumId = 0,
                 name = name1,
@@ -103,24 +106,7 @@ class CrearAlbumFragment : Fragment() {
                 "button_6",
                 "los valores en JSON ingresados son ${jsonString}"
             )
-
-            viewModel = ViewModelProvider(
-                this,
-                AddAlbumViewModel.Factory(activity.application)
-            ).get(AddAlbumViewModel::class.java)
-            viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
-                it.apply {
-                    viewModelAdapter!!.album = this
-                }
-                Log.d(
-                    "button_6",
-                    "Vamos e enviar los datos del ViewModel del Album"
-                )
-                viewModel.createAlbum(album)
-            })
-            viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-                if (isNetworkError) onNetworkError()
-            })
+            viewModel2.createAlbum(album)
         }
     }
 
