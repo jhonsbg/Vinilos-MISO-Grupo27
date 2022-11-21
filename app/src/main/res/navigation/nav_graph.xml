@@ -45,8 +45,8 @@
         android:label="Lista de Albums"
         tools:layout="@layout/fragment_album">
         <action
-            android:id="@+id/action_AlbumFragment_to_CreateAlbumFragment"
-            app:destination="@id/CrearAlbumFragment" />
+            android:id="@+id/action_albumFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
 
     <fragment
@@ -64,6 +64,15 @@
         android:name="com.example.vinilos_grupo27.CrearAlbumFragment"
         android:label="@string/crear_albumes"
         tools:layout="@layout/fragment_crear_album">
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vinilos_grupo27.ui.AlbumDetailFragment"
+        android:label="Detalle Álbum"
+        tools:layout="@layout/fragment_album_detail" >
+        <argument
+            android:name="albumId"
+            app:argType="integer"/>
     </fragment>
 
 </navigation>

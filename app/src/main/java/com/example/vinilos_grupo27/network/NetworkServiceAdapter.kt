@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Musician
+import com.example.vinilos_grupo27.models.AlbumDetail
 import com.example.vinilos_grupo27.models.Collector
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter.Companion.BASE_URL
 import org.json.JSONArray
@@ -117,5 +118,22 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getAlbumDetail(albumId:Int, onComplete:(resp: AlbumDetail)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val detail = AlbumDetail(albumId = resp.getInt("id"), name = resp.getString("name"), cover = resp.getString("cover"), recordLabel = resp.getString("recordLabel"), releaseDate = resp.getString("releaseDate"), genre = resp.getString("genre"), description = resp.getString("description"))
+                //val list = mutableListOf<AlbumDetail>()
+                //for (i in 0 until resp.length()) {
+                //   val item = resp.getJSONObject(i)
+                //    list.add(i, AlbumDetail(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                //}
+                Log.d("Detalle", detail.toString())
+                onComplete(detail)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
 }
 

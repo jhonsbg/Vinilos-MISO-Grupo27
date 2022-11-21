@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="604dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="#F4F5FB"
             android:divider="@android:drawable/divider_horizontal_textfield"
@@ -36,13 +36,15 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:autoSizeMinTextSize="12sp"
                 android:gravity="center_vertical"
                 android:text="@{musician.name}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="20dp"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
