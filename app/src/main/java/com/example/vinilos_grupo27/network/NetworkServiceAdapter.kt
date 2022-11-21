@@ -6,11 +6,13 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Musician
 import org.json.JSONArray
+import org.json.JSONObject
 
 
 class NetworkServiceAdapter constructor(context: Context) {
@@ -65,6 +67,18 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
-
+    private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+        return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
+    }
+    fun postalbumm(body: JSONObject, onComplete:(resp: JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(postRequest("albums",
+            body,
+            Response.Listener<JSONObject> { response ->
+                onComplete(response)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
 
 }
