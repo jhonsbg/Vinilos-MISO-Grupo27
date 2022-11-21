@@ -17,7 +17,7 @@ import com.example.vinilos_grupo27.R
 import com.example.vinilos_grupo27.databinding.FragmentAlbumDetailBinding
 import com.example.vinilos_grupo27.models.AlbumDetail
 import com.example.vinilos_grupo27.ui.adapters.AlbumDetailAdapter
-import com.example.vinilos_grupo27.viewmodels.AlbumDetailViewModel
+import com.example.vinilos_grupo27.viewmodel.AlbumDetailViewModel
 
 class AlbumDetailFragment : Fragment() {
 
@@ -34,6 +34,7 @@ class AlbumDetailFragment : Fragment() {
         _binding = FragmentAlbumDetailBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = AlbumDetailAdapter()
+        Log.d("onCreateView", "Aquí")
         return view
     }
 
@@ -41,6 +42,7 @@ class AlbumDetailFragment : Fragment() {
         recyclerView = binding.albumdetailRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        Log.d("onViewCreated", "Aquí")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -48,20 +50,24 @@ class AlbumDetailFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = "Detalle Álbum"
+        activity.actionBar?.title = getString(R.string.title_albumDetail)
         val args: AlbumDetailFragmentArgs by navArgs()
         Log.d("Args", args.albumId.toString())
-        viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(AlbumDetailViewModel::class.java)
-        viewModel.albumDetail.observe(viewLifecycleOwner, Observer<List<AlbumDetail>> {
-            it.apply {
+        Log.d("Variables Fragmento", "Yeah")
+        viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
+            AlbumDetailViewModel::class.java)
+        Log.d("Album Detail Fragmento", viewModel.toString())
+        viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumDetail> {
+            /*it.apply {
                 viewModelAdapter!!.albumDetails = this
                 if(this.isEmpty()){
                     binding.txtNoComments.visibility = View.VISIBLE
                 }else{
                     binding.txtNoComments.visibility = View.GONE
                 }
-            }
+            }*/
         })
+        Log.d("Fragmento despues", "2")
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
@@ -78,6 +84,4 @@ class AlbumDetailFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
-
-
 }

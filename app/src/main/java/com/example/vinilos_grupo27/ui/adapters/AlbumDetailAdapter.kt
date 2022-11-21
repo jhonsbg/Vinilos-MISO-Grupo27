@@ -12,7 +12,7 @@ import com.example.vinilos_grupo27.models.AlbumDetail
 
 class AlbumDetailAdapter: RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailViewHolder>() {
 
-    var albumDetails :List<AlbumDetail> = emptyList()
+    var albumDetails :AlbumDetail = AlbumDetail(0,"","","","","","")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -29,12 +29,12 @@ class AlbumDetailAdapter: RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailVie
 
     override fun onBindViewHolder(holder: AlbumDetailViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.albumDetail = albumDetails[position]
+            it.albumDetail = albumDetails
         }
     }
 
     override fun getItemCount(): Int {
-        return albumDetails.size
+        return 0
     }
 
     class AlbumDetailViewHolder(val viewDataBinding: AlbumDetailItemBinding) :

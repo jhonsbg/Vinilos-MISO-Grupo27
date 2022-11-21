@@ -1,4 +1,4 @@
-package com.example.vinilos_grupo27.viewmodels
+package com.example.vinilos_grupo27.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -9,9 +9,9 @@ class AlbumDetailViewModel (application: Application, albumId: Int) : AndroidVie
 
     private val albumDetailRepository = AlbumDetailRepository(application)
 
-    private val _albumDetail = MutableLiveData<List<AlbumDetail>>()
+    private val _albumDetail = MutableLiveData<AlbumDetail>()
 
-    val albumDetail: LiveData<List<AlbumDetail>>
+    val albumDetail: LiveData<AlbumDetail>
         get() = _albumDetail
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
