@@ -9,20 +9,27 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fbfcfd"
         tools:context=".CrearAlbumFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
                 android:text="Name:"
-                android:textColor="@color/white" />
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px" />
 
             <EditText
                 android:id="@+id/name_album"
@@ -30,13 +37,22 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="text" />
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:translationX="100px"/>
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Cover:"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px"/>
 
             <EditText
                 android:id="@+id/cover"
@@ -44,27 +60,45 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:translationX="100px"
+                />
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Release Date:"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px"/>
 
             <EditText
                 android:id="@+id/release_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="datetime" />
+                android:inputType="datetime"
+                android:textColor="@color/black"
+                android:translationX="100px"
+                />
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Description:"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px"/>
 
             <EditText
                 android:id="@+id/description_album"
@@ -73,40 +107,59 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:textColor="@color/white" />
+                android:textColor="@color/black"
+                android:translationX="100px"/>
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Genre:"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:translationX="100px">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteGenre"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:inputType="none"
+                    android:gravity="center"
+
                     android:text="Classical" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Record Label:"
-                android:textColor="@color/white" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#F4F5FB"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:translationX="100px"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:translationX="100px">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteRecord"
@@ -118,18 +171,29 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
             <Button
                 android:id="@+id/button6"
-                android:layout_width="wrap_content"
+                android:layout_width="234dp"
                 android:layout_height="wrap_content"
                 android:text="Crear"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
