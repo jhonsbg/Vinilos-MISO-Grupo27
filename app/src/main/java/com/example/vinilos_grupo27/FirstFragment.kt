@@ -40,11 +40,9 @@ class FirstFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_Album)
         }
-
         binding.buttonThird.setOnClickListener{
             findNavController().navigate(R.id.action_FirstFragment_to_CollectorsFragment2)
         }
-
 
     }
 

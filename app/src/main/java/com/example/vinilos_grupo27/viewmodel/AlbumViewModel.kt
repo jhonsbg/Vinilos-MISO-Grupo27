@@ -1,7 +1,6 @@
 package com.example.vinilos_grupo27.viewmodel
 
 import android.app.Application
-
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -49,8 +48,6 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
             _eventNetworkError.value = true
         }
     }
-
-
 
     private fun postDataFromNetwork(body : JSONObject){
         albumsRepository.postData(body,{

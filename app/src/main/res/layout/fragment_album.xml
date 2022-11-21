@@ -41,7 +41,5 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-
-
     </FrameLayout>
 </layout>

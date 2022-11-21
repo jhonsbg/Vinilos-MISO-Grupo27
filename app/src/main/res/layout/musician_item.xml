@@ -44,6 +44,5 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,6 @@
 package com.example.vinilos_grupo27.viewmodel
 
 import android.app.Application
-
 import androidx.lifecycle.*
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
@@ -50,7 +49,6 @@ class CollectorsViewModel(application: Application) :  AndroidViewModel(applicat
             _eventNetworkError.value = true
         }
     }
-    
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
