@@ -20,5 +20,6 @@
     <string name="vinilos">Vinilos</string>
     <string name="artistas">Artistas</string>
     <string name="albumes">Álbumes</string>
+    <string name="image">Image</string>
 
 </resources>
