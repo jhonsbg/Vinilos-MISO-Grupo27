@@ -2,10 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-
     <data>
-
         <variable
             name="musician"
             type="com.example.vinilos_grupo27.models.Musician" />
@@ -48,8 +45,6 @@
                 android:textStyle="bold"
                 android:paddingHorizontal="30dp"
                 android:paddingVertical="20dp"/>
-
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
