@@ -34,15 +34,6 @@
         android:label="Lista de Coleccionistas"
         tools:layout="@layout/fragment_collector">
     </fragment>
-
-    <fragment
-        android:id="@+id/FirstFragment2"
-        android:name="com.example.vinilos_grupo27.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-    </fragment>
-
-
     <fragment
         android:id="@+id/FirstFragment2"
         android:name="com.example.vinilos_grupo27.FirstFragment"
