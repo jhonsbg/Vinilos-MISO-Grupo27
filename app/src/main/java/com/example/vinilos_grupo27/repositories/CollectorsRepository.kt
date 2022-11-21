@@ -1,6 +1,7 @@
 package com.example.vinilos_grupo27.repositories
 
 import android.app.Application
+
 import android.util.Log
 import com.android.volley.VolleyError
 import com.example.vinilos_grupo27.models.Collector
@@ -19,8 +20,6 @@ class CollectorsRepository(val application: Application)  {
             Log.d("potentialResp", potentialResp.toString())
             return potentialResp!!
         }
-
-
 
     }
 }
