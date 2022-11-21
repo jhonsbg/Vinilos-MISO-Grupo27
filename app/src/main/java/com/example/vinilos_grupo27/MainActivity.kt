@@ -1,18 +1,21 @@
 package com.example.vinilos_grupo27
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.os.StrictMode
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.vinilos_grupo27.databinding.ActivityMainBinding
 
 
 public class MainActivity : AppCompatActivity() {
+    fun MyApp() {
+        if (BuildConfig.DEBUG) StrictMode.enableDefaults()
+    }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
