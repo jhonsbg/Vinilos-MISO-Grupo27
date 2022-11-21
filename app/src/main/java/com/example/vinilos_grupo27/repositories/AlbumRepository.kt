@@ -6,13 +6,10 @@ import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter
 import org.json.JSONObject
 
+
 class AlbumRepository(val application: Application) {
-    fun refreshData(callback: (List<Album>)->Unit, onError: (VolleyError)->Unit) {
-        NetworkServiceAdapter.getInstance(application).getAlbums({
-            callback(it)
-        },
-            onError
-        )
+    suspend fun refreshData():List<Album> {
+        return NetworkServiceAdapter.getInstance(application).getAlbums()
     }
 
     fun postData(jsonObject: JSONObject, callback: (JSONObject)->Unit, onError: (VolleyError)->Unit) {
@@ -22,4 +19,5 @@ class AlbumRepository(val application: Application) {
             onError
         )
     }
+    
 }

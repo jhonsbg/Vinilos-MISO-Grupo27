@@ -17,7 +17,6 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             notifyDataSetChanged()
         }
 
-
     var album : Album = Album(0,"","","","","","")
         set(value) {
             field = value

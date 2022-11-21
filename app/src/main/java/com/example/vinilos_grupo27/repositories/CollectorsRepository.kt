@@ -7,11 +7,7 @@ import com.example.vinilos_grupo27.network.NetworkServiceAdapter
 
 
 class CollectorsRepository(val application: Application)  {
-    fun refreshData(callback: (List<Collector>)->Unit, onError: (VolleyError)->Unit) {
-        NetworkServiceAdapter.getInstance(application).getCollectors({
-            callback(it)
-        },
-            onError
-        )
+    suspend fun refreshData(): List<Collector> {
+        return NetworkServiceAdapter.getInstance(application).getCollectors()
     }
 }

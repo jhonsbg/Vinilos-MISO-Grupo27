@@ -19,6 +19,7 @@
     <string name="artistas">Artistas</string>
     <string name="albumes">Álbumes</string>
     <string name="coleccionistas">Coleccionistas</string>
+
     <string name="hello_second_blank_fragment">Hello second_blank fragment</string>
     <string name="title_collectores">Coleccionistas</string>
     <string name="crear_albumes">Crear Album</string>
