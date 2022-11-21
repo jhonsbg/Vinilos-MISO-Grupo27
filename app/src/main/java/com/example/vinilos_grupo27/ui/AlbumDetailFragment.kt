@@ -53,19 +53,19 @@ class AlbumDetailFragment : Fragment() {
         activity.actionBar?.title = getString(R.string.title_albumDetail)
         val args: AlbumDetailFragmentArgs by navArgs()
         Log.d("Args", args.albumId.toString())
-        Log.d("Variables Fragmento", "Yeah")
+        Log.d("Variables Fragmento", this.toString())
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
             AlbumDetailViewModel::class.java)
         Log.d("Album Detail Fragmento", viewModel.toString())
         viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumDetail> {
-            /*it.apply {
-                viewModelAdapter!!.albumDetails = this
-                if(this.isEmpty()){
+            it.apply {
+                viewModelAdapter!!.albumDetails = listOf(this)
+                if(this.albumId == null){
                     binding.txtNoComments.visibility = View.VISIBLE
                 }else{
                     binding.txtNoComments.visibility = View.GONE
                 }
-            }*/
+            }
         })
         Log.d("Fragmento despues", "2")
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

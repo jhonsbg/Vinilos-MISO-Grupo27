@@ -1,6 +1,7 @@
 package com.example.vinilos_grupo27.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos_grupo27.models.AlbumDetail
 import com.example.vinilos_grupo27.repositories.AlbumDetailRepository
@@ -38,6 +39,8 @@ class AlbumDetailViewModel (application: Application, albumId: Int) : AndroidVie
         },{
             _eventNetworkError.value = true
         })
+        Log.d("ViewmoDelRefreshData", "Ok")
+
     }
 
     fun onNetworkErrorShown() {
@@ -47,8 +50,10 @@ class AlbumDetailViewModel (application: Application, albumId: Int) : AndroidVie
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
+
                 @Suppress("UNCHECKED_CAST")
                 return AlbumDetailViewModel(app, albumId) as T
+                Log.d("Factory ViewModel", "Ok")
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

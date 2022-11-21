@@ -1,5 +1,6 @@
 package com.example.vinilos_grupo27.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -12,11 +13,12 @@ import com.example.vinilos_grupo27.models.AlbumDetail
 
 class AlbumDetailAdapter: RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailViewHolder>() {
 
-    var albumDetails :AlbumDetail = AlbumDetail(0,"","","","","","")
+    var albumDetails : List<AlbumDetail> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumDetailViewHolder {
         val withDataBinding: AlbumDetailItemBinding = DataBindingUtil.inflate(
@@ -24,17 +26,23 @@ class AlbumDetailAdapter: RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailVie
             AlbumDetailViewHolder.LAYOUT,
             parent,
             false)
+        Log.d("AdapterOnCreateViewHolder", "Ok")
         return AlbumDetailViewHolder(withDataBinding)
     }
 
     override fun onBindViewHolder(holder: AlbumDetailViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.albumDetail = albumDetails
+
+            it.albumDetail = albumDetails[position]
+            Log.d("AdapterOnBindViewHolder", "Ok")
+
         }
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return albumDetails.size
+        Log.d("Adap GerItemCount", "Ok")
+
     }
 
     class AlbumDetailViewHolder(val viewDataBinding: AlbumDetailItemBinding) :
@@ -42,6 +50,8 @@ class AlbumDetailAdapter: RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailVie
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.album_detail_item
+
         }
+
     }
 }
