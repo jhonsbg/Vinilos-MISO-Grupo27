@@ -10,8 +10,9 @@
         android:id="@+id/button_first"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="112dp"
         android:background="#F4F5FB"
+        android:capitalize="none"
         android:shadowColor="@color/black"
         android:shadowDx="1"
         android:shadowDy="1"
@@ -22,15 +23,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_second"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="52dp"
         android:background="#F4F5FB"
+        android:capitalize="none"
         android:shadowColor="@color/black"
         android:shadowDx="1"
         android:shadowDy="1"
@@ -49,7 +51,7 @@
         android:id="@+id/button_third"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="172dp"
         android:background="#F4F5FB"
         android:shadowColor="@color/black"
         android:shadowDx="1"
@@ -78,7 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar8"
         android:layout_width="413dp"
@@ -89,6 +90,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar

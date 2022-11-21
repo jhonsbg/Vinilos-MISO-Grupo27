@@ -1,13 +1,15 @@
 package com.example.vinilos_grupo27.viewmodel
 
 import android.app.Application
-import android.util.Log
+
 import androidx.lifecycle.*
-import com.example.vinilos_grupo27.models.Collector
-import com.example.vinilos_grupo27.repositories.CollectorsRepository
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.example.vinilos_grupo27.models.Collector
+import com.example.vinilos_grupo27.repositories.CollectorsRepository
+
 
 class CollectorsViewModel(application: Application) :  AndroidViewModel(application) {
 
@@ -48,6 +50,7 @@ class CollectorsViewModel(application: Application) :  AndroidViewModel(applicat
             _eventNetworkError.value = true
         }
     }
+    
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
