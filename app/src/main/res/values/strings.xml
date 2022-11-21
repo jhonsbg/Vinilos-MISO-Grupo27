@@ -19,9 +19,23 @@
     <string name="artistas">Artistas</string>
     <string name="albumes">Álbumes</string>
     <string name="coleccionistas">Coleccionistas</string>
-
     <string name="hello_second_blank_fragment">Hello second_blank fragment</string>
     <string name="title_collectores">Coleccionistas</string>
-
+    <string name="crear_albumes">Crear Album</string>
+    <string name="genre">Genre</string>
+    <string-array name="Genres">
+        <item>Classical</item>
+        <item>Salsa</item>
+        <item>Rock</item>
+        <item>Folk</item>
+    </string-array>
+    <string name="RecordLabel">Record Label</string>
+    <string-array name="RecordLabels">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
 
 </resources>
