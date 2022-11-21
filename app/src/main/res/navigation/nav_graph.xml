@@ -17,12 +17,29 @@
         <action
             android:id="@+id/action_FirstFragment_to_Album"
             app:destination="@id/AlbumActivity" />
+
+        <action
+            android:id="@+id/action_FirstFragment_to_CollectorsFragment2"
+            app:destination="@id/CollectorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/MusicianFragment"
         android:name="com.example.vinilos_grupo27.ui.MusicianFragment"
         android:label="Lista de Musicos"
         tools:layout="@layout/fragment_musician" >
+    </fragment>
+    <fragment
+        android:id="@+id/CollectorsFragment"
+        android:name="com.example.vinilos_grupo27.ui.CollectorsFragment"
+        android:label="Lista de Coleccionistas"
+        tools:layout="@layout/fragment_collector">
+    </fragment>
+
+    <fragment
+        android:id="@+id/FirstFragment2"
+        android:name="com.example.vinilos_grupo27.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
     </fragment>
 
 
@@ -37,14 +54,18 @@
         android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
         android:label="Lista de Albums"
         tools:layout="@layout/fragment_album">
-
         <action
             android:id="@+id/action_AlbumFragment_to_CreateAlbumFragment"
             app:destination="@id/CrearAlbumFragment" />
-
     </fragment>
-
-
+    
+    <fragment
+        android:id="@+id/AlbumActivity"
+        android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
+        android:label="Lista de Albums"
+        tools:layout="@layout/fragment_album">
+    </fragment>
+    
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.vinilos_grupo27.SecondFragment"

@@ -6,13 +6,16 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
+
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Musician
+import com.example.vinilos_grupo27.models.Collector
 import org.json.JSONArray
 import org.json.JSONObject
+
 
 
 class NetworkServiceAdapter constructor(context: Context) {
@@ -39,6 +42,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
+
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
@@ -48,6 +52,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onComplete(list)
             },
             Response.ErrorListener {
+
                 onError(it)
             }))
     }
@@ -63,6 +68,26 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onComplete(list)
                 Log.d("musicos", list.toString())
             },
+            {
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+            
+
+    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("collectors",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Collector>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Collector(collectoId = item.getInt("id"),name = item.getString("name")))
+                }
+                onComplete(list)
+                Log.d("Coleccionistas", list.toString())
+            },
+            {
             Response.ErrorListener {
                 onError(it)
             }))
@@ -80,5 +105,4 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
-
 }

@@ -58,11 +58,9 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
-
         binding.buttonCreateAlbum.setOnClickListener {
             findNavController().navigate(R.id.action_AlbumFragment_to_CreateAlbumFragment)
         }
-
     }
 
     override fun onDestroyView() {
@@ -76,5 +74,4 @@ class AlbumFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
-
 }

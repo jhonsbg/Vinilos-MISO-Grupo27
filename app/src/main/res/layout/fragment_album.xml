@@ -20,6 +20,7 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/album_item"/>
 
+
         <Button
             android:id="@+id/button_create_album"
             android:layout_width="269dp"
@@ -40,6 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
+
 
     </FrameLayout>
 </layout>
