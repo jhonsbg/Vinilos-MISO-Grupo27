@@ -48,14 +48,6 @@
             android:id="@+id/action_AlbumFragment_to_CreateAlbumFragment"
             app:destination="@id/CrearAlbumFragment" />
     </fragment>
-    
-    <fragment
-        android:id="@+id/AlbumActivity"
-        android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
-        android:label="Lista de Albums"
-        tools:layout="@layout/fragment_album">
-    </fragment>
-
 
     <fragment
         android:id="@+id/SecondFragment"
