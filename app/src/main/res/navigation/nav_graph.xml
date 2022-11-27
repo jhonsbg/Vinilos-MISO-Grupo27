@@ -22,6 +22,12 @@
             app:destination="@id/CollectorsFragment" />
     </fragment>
     <fragment
+        android:id="@+id/FirstFragment2"
+        android:name="com.example.vinilos_grupo27.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+    </fragment>
+    <fragment
         android:id="@+id/MusicianFragment"
         android:name="com.example.vinilos_grupo27.ui.MusicianFragment"
         android:label="Lista de Musicos"
@@ -38,11 +44,15 @@
 
     </fragment>
     <fragment
-        android:id="@+id/FirstFragment2"
-        android:name="com.example.vinilos_grupo27.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vinilos_grupo27.ui.CollectorDetailFragment"
+        android:label="Detalle Collector"
+        tools:layout="@layout/fragment_collector_detail" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer"/>
     </fragment>
+
     <fragment
         android:id="@+id/AlbumActivity"
         android:name="com.example.vinilos_grupo27.ui.AlbumFragment"
@@ -55,6 +65,17 @@
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vinilos_grupo27.ui.AlbumDetailFragment"
+        android:label="Detalle Álbum"
+        tools:layout="@layout/fragment_album_detail" >
+        <argument
+            android:name="albumId"
+            app:argType="integer"/>
+    </fragment>
+
 
     <fragment
         android:id="@+id/SecondFragment"
@@ -71,25 +92,6 @@
         android:name="com.example.vinilos_grupo27.CrearAlbumFragment"
         android:label="@string/crear_albumes"
         tools:layout="@layout/fragment_crear_album">
-    </fragment>
-    <fragment
-        android:id="@+id/albumDetailFragment"
-        android:name="com.example.vinilos_grupo27.ui.AlbumDetailFragment"
-        android:label="Detalle Álbum"
-        tools:layout="@layout/fragment_album_detail" >
-        <argument
-            android:name="albumId"
-            app:argType="integer"/>
-    </fragment>
-
-    <fragment
-        android:id="@+id/collectorDetailFragment"
-        android:name="com.example.vinilos_grupo27.ui.CollectorDetailFragment"
-        android:label="Detalle Collector"
-        tools:layout="@layout/fragment_collector_detail" >
-        <argument
-            android:name="collectorId"
-            app:argType="integer"/>
     </fragment>
 
 </navigation>

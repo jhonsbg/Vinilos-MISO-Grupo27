@@ -40,6 +40,29 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#00FFFFFF"
+                android:gravity="center"
+                android:text="@{collectorDetail.telephone}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autoSizeMinTextSize="12sp"
+                android:background="#00FFFFFF"
+                android:gravity="center"
+                android:text="@{collectorDetail.email}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
