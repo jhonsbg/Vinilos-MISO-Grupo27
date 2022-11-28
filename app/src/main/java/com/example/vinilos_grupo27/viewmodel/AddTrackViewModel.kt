@@ -29,7 +29,7 @@ class AddTrackViewModel (application: Application, albumId: Int) : AndroidViewMo
 
     val idAlbum:Int = albumId
 
-    fun createTrack(track: TrackNoId){
+    fun createTrack(track: TrackNoId, id:Int){
         var gson = Gson()
         var jsonString = gson.toJson(track)
         val jsonTrack = JSONObject(jsonString)
@@ -37,7 +37,7 @@ class AddTrackViewModel (application: Application, albumId: Int) : AndroidViewMo
             "button_track",
             "los valores en JSON ingresados pasando por ViewModel son ${jsonString}"
         )
-        postDataFromNetwork(idAlbum,jsonTrack)
+        postDataFromNetwork(id,jsonTrack)
     }
 
     private fun postDataFromNetwork(idAlbum:Int, body : JSONObject){
