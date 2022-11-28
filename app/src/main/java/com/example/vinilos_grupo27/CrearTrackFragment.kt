@@ -66,7 +66,7 @@ class CrearTrackFragment : Fragment() {
             "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_albums)
-        val args: AlbumDetailFragmentArgs by navArgs()
+        val args: CrearTrackFragmentArgs by navArgs()
         Log.d("Variables Fragmento", this.toString())
         //Log.d("Args2", args.albumId.toString())
         //idAlbum = args.albumId
