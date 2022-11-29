@@ -58,10 +58,7 @@ class CrearTrackFragment : Fragment() {
         Log.d("Valor pasado", "el valor es ${userDetails}")
         idAlbumFinal = args.albumId
         Log.d("Valor destino", "el valor numerico del post es  ${idAlbumFinal}")
-
         return binding.root
-        // Inflate the layout for this fragment
-       // return inflater.inflate(R.layout.fragment_crear_track, container, false)
     }
 
     // codigo Nelson
@@ -72,11 +69,7 @@ class CrearTrackFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_albums)
-        val args: CrearTrackFragmentArgs by navArgs()
-        Log.d("Variables Fragmento", this.toString())
-        //Log.d("Args2", args.albumId.toString())
-        //idAlbum = args.albumId
+        activity.actionBar?.title = getString(R.string.title_tracks)
 
         binding.buttonTrack.setOnClickListener() {
             Log.d("button_track", "Se dio click en el boton ")
@@ -93,14 +86,10 @@ class CrearTrackFragment : Fragment() {
                 name = name,
                 duration = duration
             )
-
             Log.d(
                 "button_track",
                 "la clase es ${track.name} con tiempo de duracion ${track.duration}"
             )
-            //val args: CrearTrackFragmentArgs by navArgs()
-            Log.d("button_track", "hola, track")
-            //Log.d("button_track", "El id del Album es ${idAlbum}")
             viewModel = ViewModelProvider(this, AddTrackViewModel.Factory(activity.application, idAlbumFinal)).get(
                 AddTrackViewModel::class.java)
             viewModel.createTrack(track,idAlbumFinal)
