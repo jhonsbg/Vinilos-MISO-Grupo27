@@ -46,7 +46,10 @@ class AlbumDetailFragment : Fragment() {
         Log.d("onViewCreated", "Aquí")
 
         binding.addTrack.setOnClickListener(){
-            findNavController().navigate(R.id.action_albumDetailFragment_to_trackDetailFragment)
+            val args: AlbumDetailFragmentArgs by navArgs()
+            Log.d("origen", "el valor de id es ${args.albumId}")
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToTrackDetailFragment(args.albumId)
+            findNavController().navigate(action)
         }
 
     }
@@ -63,6 +66,9 @@ class AlbumDetailFragment : Fragment() {
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
             AlbumDetailViewModel::class.java)
         Log.d("Album Detail Fragmento", viewModel.toString())
+
+
+
         viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumDetail> {
             it.apply {
                 viewModelAdapter!!.albumDetails = listOf(this)

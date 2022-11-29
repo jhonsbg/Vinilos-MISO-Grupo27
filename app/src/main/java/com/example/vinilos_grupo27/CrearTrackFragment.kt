@@ -37,7 +37,8 @@ class CrearTrackFragment : Fragment() {
     private var _binding: FragmentCrearTrackBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel : AddTrackViewModel
-    private var idAlbum : Int = 9
+    private  var idAlbumFinal : Int = 0
+    private val args : CrearTrackFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,12 @@ class CrearTrackFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCrearTrackBinding.inflate(inflater, container, false)
+
+        val userDetails = args.albumId.toString()
+        Log.d("Valor pasado", "el valor es ${userDetails}")
+        idAlbumFinal = args.albumId
+        Log.d("Valor destino", "el valor numerico del post es  ${idAlbumFinal}")
+
         return binding.root
         // Inflate the layout for this fragment
        // return inflater.inflate(R.layout.fragment_crear_track, container, false)
@@ -94,9 +101,9 @@ class CrearTrackFragment : Fragment() {
             //val args: CrearTrackFragmentArgs by navArgs()
             Log.d("button_track", "hola, track")
             //Log.d("button_track", "El id del Album es ${idAlbum}")
-            viewModel = ViewModelProvider(this, AddTrackViewModel.Factory(activity.application, idAlbum)).get(
+            viewModel = ViewModelProvider(this, AddTrackViewModel.Factory(activity.application, idAlbumFinal)).get(
                 AddTrackViewModel::class.java)
-            viewModel.createTrack(track,idAlbum)
+            viewModel.createTrack(track,idAlbumFinal)
         }
     }
 
