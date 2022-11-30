@@ -79,12 +79,24 @@
         <argument
             android:name="albumId"
             app:argType="integer"/>
+        <action
+            android:id="@+id/action_albumDetailFragment_to_trackDetailFragment"
+            app:destination="@id/trackDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailFragment"
         android:name="com.example.vinilos_grupo27.ui.ArtistDetailFragment"
         android:label="Detalle Artista"
         tools:layout="@layout/fragment_artist_detail" >
+        <argument
+        android:name="albumId"
+        app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/trackDetailFragment"
+        android:name="com.example.vinilos_grupo27.CrearTrackFragment"
+        android:label="Asociar Track en Álbum"
+        tools:layout="@layout/fragment_crear_track" >
         <argument
             android:name="albumId"
             app:argType="integer"/>
