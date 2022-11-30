@@ -21,6 +21,10 @@ import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Musician
 import com.example.vinilos_grupo27.models.AlbumDetail
 import com.example.vinilos_grupo27.models.Collector
+<<<<<<< HEAD
+import com.example.vinilos_grupo27.models.ArtistDetail
+=======
+>>>>>>> develop
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter.Companion.BASE_URL
 import org.json.JSONArray
 import org.json.JSONObject
@@ -136,6 +140,18 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getArtistDetail(albumId:Int, onComplete:(resp: ArtistDetail)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians/$albumId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val detail = ArtistDetail(artistId = resp.getInt("id"), name = resp.getString("name"), image = resp.getString("image"), description = resp.getString("description"), birthDate = resp.getString("birthDate"))
+                Log.d("Detalle", detail.toString())
+                onComplete(detail)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
     fun posttrack(albumId:Int,body: JSONObject, onComplete:(resp: JSONObject)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(postRequest("albums/$albumId/tracks",
             body,
@@ -146,6 +162,5 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
-
 }
 

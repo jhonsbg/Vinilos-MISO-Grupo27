@@ -15,6 +15,9 @@
 
     <string name="title_albumDetail">Detalle Álbum</string>
 
+    <string name="title_albumDetail">Detalle Álbum</string>
+    <string name="title_artistDetail">Detalle Artista</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_musicians">Artistas</string>
