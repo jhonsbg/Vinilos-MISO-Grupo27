@@ -135,5 +135,17 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+    fun posttrack(albumId:Int,body: JSONObject, onComplete:(resp: JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(postRequest("albums/$albumId/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                onComplete(response)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
 }
 
