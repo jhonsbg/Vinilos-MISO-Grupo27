@@ -32,6 +32,9 @@
         android:name="com.example.vinilos_grupo27.ui.MusicianFragment"
         android:label="Lista de Musicos"
         tools:layout="@layout/fragment_musician" >
+        <action
+            android:id="@+id/action_musicianFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/CollectorsFragment"
@@ -66,6 +69,24 @@
             app:destination="@id/albumDetailFragment" />
     </fragment>
 
+    
+    
+    <fragment
+    android:id="@+id/SecondFragment"
+    android:name="com.example.vinilos_grupo27.SecondFragment"
+    android:label="@string/second_fragment_label"
+    tools:layout="@layout/fragment_second">
+    
+    <action
+    android:id="@+id/action_SecondFragment_to_FirstFragment"
+    app:destination="@id/FirstFragment" />
+</fragment>
+<fragment
+android:id="@+id/CrearAlbumFragment"
+android:name="com.example.vinilos_grupo27.CrearAlbumFragment"
+android:label="@string/crear_albumes"
+tools:layout="@layout/fragment_crear_album">
+</fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinilos_grupo27.ui.AlbumDetailFragment"
@@ -74,24 +95,27 @@
         <argument
             android:name="albumId"
             app:argType="integer"/>
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.vinilos_grupo27.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_albumDetailFragment_to_trackDetailFragment"
+            app:destination="@id/trackDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/CrearAlbumFragment"
-        android:name="com.example.vinilos_grupo27.CrearAlbumFragment"
-        android:label="@string/crear_albumes"
-        tools:layout="@layout/fragment_crear_album">
+        android:id="@+id/artistDetailFragment"
+        android:name="com.example.vinilos_grupo27.ui.ArtistDetailFragment"
+        android:label="Detalle Artista"
+        tools:layout="@layout/fragment_artist_detail" >
+        <argument
+        android:name="albumId"
+        app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/trackDetailFragment"
+        android:name="com.example.vinilos_grupo27.CrearTrackFragment"
+        android:label="Asociar Track en Álbum"
+        tools:layout="@layout/fragment_crear_track" >
+        <argument
+            android:name="albumId"
+            app:argType="integer"/>
     </fragment>
 
 </navigation>

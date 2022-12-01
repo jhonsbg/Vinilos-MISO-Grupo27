@@ -17,7 +17,11 @@ import kotlin.coroutines.suspendCoroutine
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.vinilos_grupo27.models.*
+import com.example.vinilos_grupo27.models.Album
+import com.example.vinilos_grupo27.models.Musician
+import com.example.vinilos_grupo27.models.AlbumDetail
+import com.example.vinilos_grupo27.models.Collector
+import com.example.vinilos_grupo27.models.ArtistDetail
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter.Companion.BASE_URL
 import org.json.JSONArray
 import org.json.JSONObject
@@ -127,6 +131,29 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //}
                 Log.d("Detalle", detail.toString())
                 onComplete(detail)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getArtistDetail(albumId:Int, onComplete:(resp: ArtistDetail)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians/$albumId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val detail = ArtistDetail(artistId = resp.getInt("id"), name = resp.getString("name"), image = resp.getString("image"), description = resp.getString("description"), birthDate = resp.getString("birthDate"))
+                Log.d("Detalle", detail.toString())
+                onComplete(detail)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+    fun posttrack(albumId:Int,body: JSONObject, onComplete:(resp: JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(postRequest("albums/$albumId/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                onComplete(response)
             },
             Response.ErrorListener {
                 onError(it)
