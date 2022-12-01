@@ -21,10 +21,7 @@ import com.example.vinilos_grupo27.models.Album
 import com.example.vinilos_grupo27.models.Musician
 import com.example.vinilos_grupo27.models.AlbumDetail
 import com.example.vinilos_grupo27.models.Collector
-<<<<<<< HEAD
 import com.example.vinilos_grupo27.models.ArtistDetail
-=======
->>>>>>> develop
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter.Companion.BASE_URL
 import org.json.JSONArray
 import org.json.JSONObject
@@ -157,6 +154,24 @@ class NetworkServiceAdapter constructor(context: Context) {
             body,
             Response.Listener<JSONObject> { response ->
                 onComplete(response)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getCollectorDetail(collectorId:Int, onComplete:(resp: CollectorDetail)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("collectors/$collectorId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val detail = CollectorDetail(collectorId = resp.getInt("id"), name = resp.getString("name"), telephone = resp.getString("telephone"), email = resp.getString("email"))
+                //val list = mutableListOf<AlbumDetail>()
+                //for (i in 0 until resp.length()) {
+                //   val item = resp.getJSONObject(i)
+                //    list.add(i, AlbumDetail(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                //}
+                Log.d("Detalle Collector", detail.toString())
+                onComplete(detail)
             },
             Response.ErrorListener {
                 onError(it)
