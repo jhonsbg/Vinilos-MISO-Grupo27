@@ -113,7 +113,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
 
-    suspend fun getAlbumDetail(albumId:Int)= suspendCoroutine<AlbumDetail>{cont ->
+    suspend fun getAlbumDetail(albumId:Int)= suspendCoroutine{cont ->
         requestQueue.add(
             getRequest("albums/$albumId",
                 Response.Listener<String> { response ->
@@ -127,6 +127,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         genre = resp.getString("genre"),
                         description = resp.getString("description")
                     )
+                    Log.d("Detalle AlbumDetail", detail.toString())
                     //val list = mutableListOf<AlbumDetail>()
                     //for (i in 0 until resp.length()) {
                     //   val item = resp.getJSONObject(i)
@@ -139,17 +140,19 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
-    fun getArtistDetail(albumId:Int, onComplete:(resp: ArtistDetail)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getArtistDetail(albumId:Int)=suspendCoroutine{cont ->
         requestQueue.add(getRequest("musicians/$albumId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
                 val detail = ArtistDetail(artistId = resp.getInt("id"), name = resp.getString("name"), image = resp.getString("image"), description = resp.getString("description"), birthDate = resp.getString("birthDate"))
-                Log.d("Detalle", detail.toString())
-                onComplete(detail)
+                Log.d("Detalle getArtistDetail", detail.toString()
+                )
+                cont.resume(detail)
             },
             Response.ErrorListener {
-                onError(it)
-            }))
+                cont.resumeWithException(it)
+            })
+        )
     }
     fun posttrack(albumId:Int,body: JSONObject, onComplete:(resp: JSONObject)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(postRequest("albums/$albumId/tracks",
