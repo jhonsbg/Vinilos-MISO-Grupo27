@@ -2,9 +2,7 @@ package com.example.vinilos_grupo27.network
 
 import android.content.Context
 import android.util.Log
-import com.example.vinilos_grupo27.models.Album
-import com.example.vinilos_grupo27.models.Collector
-import com.example.vinilos_grupo27.models.Musician
+import com.example.vinilos_grupo27.models.*
 
 class CacheManager(context: Context){
     companion object{
@@ -19,7 +17,9 @@ class CacheManager(context: Context){
     private var albums:List<Album> = ArrayList<Album>()
     private var collectors:List<Collector> = ArrayList<Collector>()
     private var musician:List<Musician> = ArrayList<Musician>()
-
+    private var albumDetail:List<AlbumDetail> = ArrayList<AlbumDetail>()
+    private var collectorDetail:List<CollectorDetail> = ArrayList<CollectorDetail>()
+    private var artistDetail:List<ArtistDetail> = ArrayList<ArtistDetail>()
     fun addAlbum(albumes :List<Album>){
         for (item: Album in albumes) {
             Log.d("addAlbum", item.toString())
@@ -54,5 +54,17 @@ class CacheManager(context: Context){
         Log.d("getMusician", musician.toString())
         return musician
 
+    }
+
+    fun getAlbumDetail():List<AlbumDetail>{
+        return albumDetail
+
+    }
+    fun getCollectorDetail():List<CollectorDetail>{
+        return collectorDetail
+    }
+
+    fun getArtistDetail():List<ArtistDetail>{
+        return artistDetail
     }
 }
