@@ -127,6 +127,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         genre = resp.getString("genre"),
                         description = resp.getString("description")
                     )
+                    cont.resume(detail)
                     Log.d("Detalle AlbumDetail", detail.toString())
                     //val list = mutableListOf<AlbumDetail>()
                     //for (i in 0 until resp.length()) {
@@ -165,7 +166,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getCollectorDetail(collectorId:Int, onComplete:(resp: CollectorDetail)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getCollectorDetail(collectorId:Int)=suspendCoroutine{cont ->
         requestQueue.add(getRequest("collectors/$collectorId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
@@ -175,12 +176,11 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //   val item = resp.getJSONObject(i)
                 //    list.add(i, AlbumDetail(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 //}
-                Log.d("Detalle Collector", detail.toString())
-                onComplete(detail)
+                cont.resume(detail)
             },
             Response.ErrorListener {
-                onError(it)
-            }))
-    }
+                cont.resumeWithException(it)
+            })
+        )}
 }
 

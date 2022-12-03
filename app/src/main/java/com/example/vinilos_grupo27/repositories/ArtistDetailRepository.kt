@@ -7,7 +7,7 @@ import com.example.vinilos_grupo27.models.ArtistDetail
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter
 
 class ArtistDetailRepository (val application: Application) {
-    suspend fun refreshData(albumId: Int): ArtistDetail {
-        return NetworkServiceAdapter.getInstance(application).getArtistDetail(albumId)
+    suspend fun refreshData(artistId: Int): ArtistDetail {
+        return NetworkServiceAdapter.getInstance(application).getArtistDetail(artistId)
     }
 }
