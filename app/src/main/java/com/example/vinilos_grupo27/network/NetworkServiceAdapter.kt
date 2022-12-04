@@ -17,11 +17,7 @@ import kotlin.coroutines.suspendCoroutine
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.vinilos_grupo27.models.Album
-import com.example.vinilos_grupo27.models.Musician
-import com.example.vinilos_grupo27.models.AlbumDetail
-import com.example.vinilos_grupo27.models.Collector
-import com.example.vinilos_grupo27.models.ArtistDetail
+import com.example.vinilos_grupo27.models.*
 import com.example.vinilos_grupo27.network.NetworkServiceAdapter.Companion.BASE_URL
 import org.json.JSONArray
 import org.json.JSONObject
