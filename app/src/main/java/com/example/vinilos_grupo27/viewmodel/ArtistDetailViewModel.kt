@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos_grupo27.models.ArtistDetail
 import com.example.vinilos_grupo27.repositories.ArtistDetailRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArtistDetailViewModel (application: Application, albumId: Int) : AndroidViewModel(application) {
 
@@ -32,14 +35,20 @@ class ArtistDetailViewModel (application: Application, albumId: Int) : AndroidVi
     }
 
     private fun refreshDataFromNetwork() {
-        artistDetailRepository.refreshData(id, {
-            _artistDetail.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try{ viewModelScope.launch(Dispatchers.Default) {
+            withContext(Dispatchers.IO) {
+                var data = artistDetailRepository.refreshData(id)
+                _artistDetail.postValue(data)
+            }
+            _eventNetworkError.postValue(false)
+            _isNetworkErrorShown.postValue(false)
+                }
+            }
+        catch (e:Exception){
             _eventNetworkError.value = true
-        })
-        Log.d("ViewmoDelRefreshData", "Ok")
+        }
+
+
 
     }
 
