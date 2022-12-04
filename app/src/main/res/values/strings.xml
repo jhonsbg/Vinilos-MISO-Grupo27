@@ -13,6 +13,8 @@
     <string name="title_albums">Albumes</string>
     <string name="title_tracks">Cancion</string>
 
+    <string name="title_albumDetail">Detalle Álbum</string>
+
     <string name="title_collectorDetail">Detalle Coleccionista</string>
 
     <string name="title_artistDetail">Detalle Artista</string>
