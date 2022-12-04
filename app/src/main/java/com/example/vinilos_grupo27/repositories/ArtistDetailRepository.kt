@@ -14,9 +14,9 @@ class ArtistDetailRepository (val application: Application) {
             val artist = NetworkServiceAdapter.getInstance(application).getArtistDetail(artistId)
             CacheManager.getInstance(application.applicationContext).addArtistDetail(artist)
             return artist
-        }
-        else{
-        return potentialResp!!
+        } else
+        {
+            return potentialResp!!
         }
     }
 }

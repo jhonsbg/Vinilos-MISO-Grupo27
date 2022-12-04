@@ -84,23 +84,25 @@ class CacheManager(context: Context){
 
     }
 
-    fun getCollectorDetail():CollectorDetail?{
 
+    fun getCollectorDetail():CollectorDetail?{
         if(collectorDetail.isEmpty()){
             return null
-
-
         }
         return collectorDetail.get(0)
-
     }
 
-    fun getArtistDetail():ArtistDetail?{
+    fun addCollectorDetail(collectorDetail2:CollectorDetail){
+        collectorDetail.toMutableList().add(collectorDetail2)
+    }
 
+
+
+
+    fun getArtistDetail():ArtistDetail?{
         if(artistDetail.isEmpty()){
             return null
         }
-
         return artistDetail.get(0)
     }
 }
