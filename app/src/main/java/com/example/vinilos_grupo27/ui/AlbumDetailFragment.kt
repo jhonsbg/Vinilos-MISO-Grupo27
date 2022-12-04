@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +44,14 @@ class AlbumDetailFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
         Log.d("onViewCreated", "Aquí")
+
+        binding.addTrack.setOnClickListener(){
+            val args: AlbumDetailFragmentArgs by navArgs()
+            Log.d("origen", "el valor de id es ${args.albumId}")
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToTrackDetailFragment(args.albumId)
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,6 +66,9 @@ class AlbumDetailFragment : Fragment() {
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
             AlbumDetailViewModel::class.java)
         Log.d("Album Detail Fragmento", viewModel.toString())
+
+
+
         viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumDetail> {
             it.apply {
                 viewModelAdapter!!.albumDetails = listOf(this)

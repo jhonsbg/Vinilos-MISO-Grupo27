@@ -29,7 +29,8 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:translationX="100px" />
+                android:translationX="100px"
+                android:labelFor="@+id/name_album" />
 
             <EditText
                 android:id="@+id/name_album"
@@ -52,7 +53,8 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:translationX="100px"/>
+                android:translationX="100px"
+                android:labelFor="@+id/cover" />
 
             <EditText
                 android:id="@+id/cover"
@@ -75,7 +77,8 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:translationX="100px"/>
+                android:translationX="100px"
+                android:labelFor="@+id/release_date" />
 
             <EditText
                 android:id="@+id/release_date"
@@ -98,7 +101,8 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:translationX="100px"/>
+                android:translationX="100px"
+                android:labelFor="@+id/description_album" />
 
             <EditText
                 android:id="@+id/description_album"

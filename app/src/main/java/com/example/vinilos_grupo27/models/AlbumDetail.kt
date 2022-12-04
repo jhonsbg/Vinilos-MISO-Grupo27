@@ -1,11 +1,14 @@
 package com.example.vinilos_grupo27.models
 
 data class AlbumDetail(
-    val albumId:Int,
-    val name:String,
-    val cover:String,
-    val releaseDate:String,
-    val description:String,
-    val genre:String,
-    val recordLabel:String
+    var albumId:Int,
+    var name:String,
+    var cover:String,
+    var releaseDate:String,
+    var description:String,
+    var genre:String,
+    var recordLabel:String
 )
+{
+    constructor(): this(0,"","","","","","" ) {  }
+}
