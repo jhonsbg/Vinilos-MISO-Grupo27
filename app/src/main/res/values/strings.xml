@@ -27,6 +27,8 @@
 
     <string name="image">Image</string>
     <string name="coleccionistas">Coleccionistas</string>
+    <string name="imageAlbumDetail">Imagen de la portada del álbum</string>
+    <string name="imageArtistDetail">Foto del artista</string>
 
     <string name="hello_second_blank_fragment">Hello second_blank fragment</string>
     <string name="title_collectores">Coleccionistas</string>
