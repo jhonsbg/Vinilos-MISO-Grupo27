@@ -71,18 +71,36 @@ class CacheManager(context: Context){
 
 
         }
-
         return albumDetail.get(0)
 
     }
     fun addAlbumDetail(albumDetail2: AlbumDetail){
         albumDetail.toMutableList().add(albumDetail2)
     }
-    fun getCollectorDetail():List<CollectorDetail>{
-        return collectorDetail
+
+
+    fun addArtistDetail(artistDetail2: ArtistDetail){
+        artistDetail.toMutableList().add(artistDetail2)
+
     }
 
-    fun getArtistDetail():List<ArtistDetail>{
-        return artistDetail
+    fun getCollectorDetail():CollectorDetail?{
+
+        if(collectorDetail.isEmpty()){
+            return null
+
+
+        }
+        return collectorDetail.get(0)
+
+    }
+
+    fun getArtistDetail():ArtistDetail?{
+
+        if(artistDetail.isEmpty()){
+            return null
+        }
+
+        return artistDetail.get(0)
     }
 }
